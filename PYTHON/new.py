@@ -482,18 +482,111 @@ with open("practice.txt","r") as f:
 for i in lists:
     if(int(i)%2==0):
         print(i)
+
+#class and object
+class student:
+    name="nil"
+    age=22
+s1=student()
+print(s1.name,s1.age)
+
+#constructor
+class student:
+    species="human"
+    name="null"
+    def __init__(self, name,age):
+        print("adding new student...")
+        self.name=name
+        self.age=age
+    def YOB(self):
+        year=2025-self.age
+        print("year of birth is: ",year)
+
+s1=student("nilkanth",22)
+s2=student("nil",222)
+print(s2.name,s2.age,s2.species)
+print(s1.name,s1.age)
+s1.YOB()
+s2.YOB()
+
+class student:
+    def __init__(self):
+        print("welcome")
+        self.name=input("enter name: ")
+        self.subj1=int(input("enter physics marks: "))
+        self.subj2=int(input("enter math marks: "))
+        self.subj3=int(input("enter bio marks: "))
         
+    def average(self):
+        avg=(self.subj1 +self.subj2+self.subj3)/3
+        print("average is=",avg)
+
+s1=student()
+s1.average()
+
+#decorator
+class student:
+    @staticmethod
+    def hello():
+        print("no need of self here")
+
+s1=student()
+s1.hello()
+
 
 
 """
 
+class bank:
+    def __init__(self):
+        print("welcome to Children's bank of India")
+        self.id=int(input("enter account number: "))
+        self.bal=float(input("enter balance: "))
+        
+    def balance(self):
+        ids=int(input("enter account number:"))
+        if(ids==self.id):
+            print("your current balance is: INR",self.bal)
+        else:
+            print("Invalid account number")
 
+    def credit(self,amount):
+        self.bal+=amount
 
+    def debit(self,amount):
+        if(self.bal>=amount):
+            self.bal -=amount
+        else:
+            print("insufficient balance")
 
+p=bank()
+p.balance()
+class bank:
+    def __init__(self):
+        print("welcome to Children's bank of India")
+        self.id=int(input("enter account number: "))
+        self.bal=float(input("enter balance: "))
+        
+    def balance(self):
+        ids=int(input("enter account number:"))
+        if(ids==self.id):
+            print("your current balance is: INR",self.bal)
+        else:
+            print("Invalid account number")
 
+    def credit(self,amount):
+        self.bal+=amount
 
+    def debit(self,amount):
+        if(self.bal>=amount):
+            self.bal -=amount
+        else:
+            print("insufficient balance")
 
-
+p=bank()
+p.balance()
+p.credit(1000)
+p.balance()
 
 
 
