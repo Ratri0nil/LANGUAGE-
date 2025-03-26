@@ -309,9 +309,6 @@ while i<len(lists):
     print(lists[i])
     i+=1
 
-
-
-"""
 lists=(1,4,9,16,25)
 i=0
 search=int(input("Enter number to search:"))
@@ -321,5 +318,254 @@ while i<len(lists):
     else:
         print("searching...")
     i+=1
+
+i=0
+while i<5:
+    print(i)
+    if(i==3):
+        break
+    else:
+        i+=1
+
+i=0
+while i<5:
+    if(i==3):
+        i+=1
+        continue
+    else:
+        print(i)
+    i+=1
+
+numbers=[1.1,2,"hello"]
+for num in numbers:
+    print(num)
+
+str="nilkanth"
+for char in str:
+    if(char=="z"):
+        print("found")
+        break
+else:
+    print("Not found")
+
+#Range
+for i in range(2,10,3):
+    print(i)
+
+num=int(input("enter number: "))
+for i in range(1,11):
+    print(i*num)
+
+for i in range(100):
+    pass
+
+sum,i=0,1
+n=int(input("enter number: "))
+while i<=n:
+    sum=sum+i
+    i+=1
+print("sum is: ",sum)
+
+i=1
+n=int(input("enter number: "))
+while i<=n:
+    fact=1
+    for j in range(1,i+1):
+        fact=j*fact
+    print("factorial of",i,"is",fact)
+    i+=1
+
+def sum(a,b):
+    s=a+b
+    return s
+
+s=sum(11,22)
+print(s)
+
+print("hello",end="%")
+print("world")
+
+def sum(a,b=0):
+    s=a+b
+    return s
+
+s=sum(1,1)
+print(s)
+
+def listlen(lists):
+    count=0
+    for i in lists:
+        count+=1
+    return count
+
+lists=[1,2,3,"1.2"]
+print(listlen(lists))
+
+def print_ele(lists):
+    for i in lists:
+        print(i,end=" ")
+
+lists=[1,2,3,"1.2"]
+print_ele(lists)
+
+def factorial(n):
+    fact,i=1,1
+    while i<n+1:
+        fact=i*fact
+        i+=1
+    print("factorial is:",fact)
+
+n=int(input("enter number:"))
+factorial(n)
+
+def facto(n):
+    if(n==1 or n==0):
+        return 1
+    else:
+        return n*facto(n-1)
+
+num=int(input("enter number:"))
+print(facto(num))
+
+
+#file
+f=open("file.txt","r")
+print(f.read())
+print(f.read(5))
+print(f.readline())
+f.close()
+
+f=open("file.txt","a")
+f.write("TO WRITE: \nF.WRITE()")
+
+with open("file.txt","r") as f:
+    print(f.read())
+
+import os
+os.remove("file.txt")
+
+with open("practice.txt","w") as f:
+    f.write("Hi everyone\nwe are learning F i/o\nusing java.\ni hate I")
+with open("practice.txt","r") as f:
+    data=f.read()
+    print(data.replace("java","qpython"))
+    if(data.find("python")!=-1):
+        print("found")
+
+count=1
+data=True
+with open("practice.txt","r") as f:
+    while data:
+        data=f.readline()
+        if("python" in data):
+            print(count)
+        else:
+            count+=1
+        
+lists=[]
+with open("practice.txt","r") as f:
+    data=f.read()
+    num=""
+    for i in range(len(data)):
+        if(data[i]==","):
+            lists.append(int(num))
+            num=""
+        else:
+            num+=data[i]
+for i in lists:
+    if(i%2==0):
+        print(i)
+
+with open("practice.txt","r") as f:
+    data=f.read()
+    lists=data.split(",")
+for i in lists:
+    if(int(i)%2==0):
+        print(i)
+        
+
+
+"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

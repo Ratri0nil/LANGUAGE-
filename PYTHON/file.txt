@@ -1,0 +1,28 @@
+TO OPEN :
+f=open("name.exe or "path","mode")
+modes:
+r=read
+w=create or overwrite
+x= create and open for write
+a= write append
++: open for update(read or write)
+r+: read and overwrite at start of file
+w+: read and overwrite complete file
+a+: read and append at end of file
+
+TO READ:
+data=f.read() OR data=f.read(n) / read first n character
+data=f.readline() /read one line 
+print(data)
+
+TO WRITE: 
+F.WRITE()
+
+WITH SYNTAX:
+with open("name","mode") as nickname:
+    print(f.read())
+    
+
+DELETE FILE:
+import os
+os.remove("file.txt")
