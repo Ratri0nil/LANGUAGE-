@@ -1,7 +1,9 @@
 print("I am I\n####################")
 
-"""
 name="nilkanth"
+
+""""
+
 print("my name is: ",name)
 age=22
 print("my age is: ",age,"years")
@@ -45,12 +47,9 @@ print(num1/num2,num2/num1,num1//num2,num2//num1)
 num1,num2=4,-3
 print(num1%num2,num2%num1)
 
-"""
-
 # print("comment")
-"""print(comments)"""
+#print("comments")
 
-"""
 name=input("enter name: ")
 age=int(input("enter age: "))
 rating=float(input("rate yourself: "))
@@ -61,17 +60,14 @@ if(age>=18 and age <=25):
 elif(name=="nilkanth" or name=="nisha"):
     print("It is me")
 else:
-    print("bye")"
+    print("bye")
 
 nature="smart" if name=="nilkanth" else "bad"
 print("you are very",nature)
 
 nature=("green","red") [age>25]
 print("you are a",nature,"flag")
-"
-"""
 
-"""
 num1=int(input("enter number one: "))
 num2=int(input("enter number two: "))
 sum=num1+num2
@@ -79,11 +75,11 @@ print("sum of",num1,"and",num2,"is",sum)
 
 side=float(input("enter side of square:"))
 area=side**2
-print("area of square is:",area)"
+print("area of square is:",area)
 
 num1=int(input("enter number one: "))
 num2=int(input("enter number two: "))
-print(num1>=num2)"
+print(num1>=num2)
 
 str1= input("enter string one: ")
 str2= input("enter string two: ")
@@ -533,121 +529,272 @@ class student:
 s1=student()
 s1.hello()
 
+class bank:
+    def __init__(self):
+        print("welcome to Children's bank of India")
+        self.id=int(input("enter account number: "))
+        self.bal=float(input("enter balance: "))
+        
+    def balance(self):
+        ids=int(input("enter account number:"))
+        if(ids==self.id):
+            print("your current balance is: INR",self.bal)
+        else:
+            print("Invalid account number")
+
+    def credit(self,amount):
+        self.bal+=amount
+
+    def debit(self,amount):
+        if(self.bal>=amount):
+            self.bal -=amount
+        else:
+            print("insufficient balance")
+
+p=bank()
+p.balance()
+p.credit(500)
+p.balance()
+p.debit(10000)
+p.balance()
+
+class student:
+    def __init__(self,name):
+        self.name=name
+        print(self.name)
+        print("hello")
+
+s1=student("kirsh")
+del s1.name
+print(s1.name)
+
+class student:
+    def __init__(self,name,code):
+        self.name=name
+        self.__code=code #private attribute
+
+    def __priv(self): #private method
+        print(self.name)
+
+    def printpass(self):
+        print(self.__code)
+        self.__priv()
+
+s1=student("nil",11)
+print(s1.name)
+s1.printpass()
+s1.__priv()
+
+#inheritance
+class action():
+    def __init__(self):
+        print("please sit in car")
+        
+    @staticmethod
+    def startcar():
+        print("car started")
+
+    @staticmethod
+    def stopcar():
+        print("car stopped")
+
+class car(action):
+    def __init__(self,name):
+        self.name=name
+        print("you are driving",self.name)
+
+class price(car):
+    def __init__(self,name):
+        self.name=name
+        if(self.name=="bmw"):
+            print("you are driving",self.name,"of worth INR 1000000")
+        
+
+car1=car("bmw")
+car1.startcar()
+car1.stopcar()
+
+car2=price("bmw")
+car2.startcar()
+car2.stopcar()
+
+class a():
+    print("welcome to class A") 
+
+class b():
+    print("welcome to class B")
+
+class c(a,b):
+    print("welcome to class C")
+
+c1=c()
+
+class action():
+    def __init__(self,price):
+        print("please sit in car")
+        self.price=price
+        
+    @staticmethod
+    def startcar():
+        print("car started")
+
+    @staticmethod
+    def stopcar():
+        print("car stopped")
+
+class car(action):
+    def __init__(self,name,price):
+        self.name=name
+        super().__init__(price)
+        super().startcar()
+
+c1=car("nano",100000)
+print(c1.price)
+
+class person:
+    name="unknown"
+
+    def changename(self,name):
+        self.name=name
+        print(self.name)
+
+    @classmethod
+    def namechange(cls,name):
+        cls.name=name
+        print(cls.name)
+
+p1=person()
+p1.changename("hello")
+print(p1.name)
+print(person.name)
+p1.namechange("hooo")
+print(person.name)
+
+class student():
+    def __init__(self,phy,chem,bio):
+        self.phy=phy
+        self.chem=chem
+        self.bio=bio
+
+    @property
+    def avg(self):
+        self.average=(self.phy +self.chem +self.bio)/3
+        print("average is: ",self.average)
+
+s1=student(11,12,13)
+s1.avg
+s1.phy=20
+s1.avg
+
+#polymorphism
+print(1+2)
+print("hello"+"world")
+print([1,2]+[3,4])       
+
+class comp():
+    def __init__(self,real,img):
+        self.real=real
+        self.img=img
+
+    def show(self):
+        print(self.real,"i +",self.img,"j")
+
+    def adding(num1,num2):
+        newreal=num1.real+ num2.real
+        newimg=num1.img+ num2.img
+        return comp(newreal,newimg)
+
+
+c1=comp(1,2)
+c1.show()
+c2=comp(3,4)
+c2.show()
+c=c1.adding(c2)
+c.show()
+      
+class comp():
+    def __init__(self,real,img):
+        self.real=real
+        self.img=img
+
+    def show(self):
+        print(self.real,"i +",self.img,"j")
+
+    def __add__(num1,num2):
+        newreal=num1.real+ num2.real
+        newimg=num1.img+ num2.img
+        return comp(newreal,newimg)
+
+
+c1=comp(1,2)
+c1.show()
+c2=comp(3,4)
+c2.show()
+c=c1+c2
+c.show()
+
+class circle():
+    def __init__(self,radius):
+        self.rad=radius
+
+    @property
+    def area(self):
+        self.areas= (3.14)*(self.rad ** 2)
+        print("area is: sq.unit",self.areas)
+
+    @property
+    def perimeter(self):
+        self.peri= (3.14)*(self.rad * 2)
+        print("circumference is: unit",self.peri)
+
+
+c1=circle(7)
+c1.area
+c1.perimeter    
+c1.rad=14
+c1.area 
+
+class employee():
+    def __init__(self,role,dept,salary):
+        self.role=role
+        self.dept=dept
+        self.salary=salary
+
+    def show(self):
+        print("role: ",self.role)
+        print("department: ",self.dept)
+        print("salary is: INR ",self.salary)
+
+class engineer(employee):
+    def __init__(self,name,age):
+        self.name=name
+        self.age=age
+        super().__init__("Enginner","IT",1000000)
+
+
+p1=employee("leader","IT",100000)
+p1.show()
+        
+e1=engineer("krish",27)
+e1.show()
+
+
+
 
 
 """
+class order():
+    def __init__(self,name,price):
+        self.item=name
+        self.price=price
 
-class bank:
-    def __init__(self):
-        print("welcome to Children's bank of India")
-        self.id=int(input("enter account number: "))
-        self.bal=float(input("enter balance: "))
-        
-    def balance(self):
-        ids=int(input("enter account number:"))
-        if(ids==self.id):
-            print("your current balance is: INR",self.bal)
-        else:
-            print("Invalid account number")
+    def __gt__(self,order2):
+        return (self.price>order2.price)
 
-    def credit(self,amount):
-        self.bal+=amount
 
-    def debit(self,amount):
-        if(self.bal>=amount):
-            self.bal -=amount
-        else:
-            print("insufficient balance")
-
-p=bank()
-p.balance()
-class bank:
-    def __init__(self):
-        print("welcome to Children's bank of India")
-        self.id=int(input("enter account number: "))
-        self.bal=float(input("enter balance: "))
-        
-    def balance(self):
-        ids=int(input("enter account number:"))
-        if(ids==self.id):
-            print("your current balance is: INR",self.bal)
-        else:
-            print("Invalid account number")
-
-    def credit(self,amount):
-        self.bal+=amount
-
-    def debit(self,amount):
-        if(self.bal>=amount):
-            self.bal -=amount
-        else:
-            print("insufficient balance")
-
-p=bank()
-p.balance()
-p.credit(1000)
-p.balance()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+o1=order("pen",20)
+o2=order("tea",50)
+print(o1>o2)
 
 
 
