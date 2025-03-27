@@ -1,9 +1,6 @@
 print("I am I\n####################")
 
 name="nilkanth"
-
-""""
-
 print("my name is: ",name)
 age=22
 print("my age is: ",age,"years")
@@ -778,11 +775,6 @@ p1.show()
 e1=engineer("krish",27)
 e1.show()
 
-
-
-
-
-"""
 class order():
     def __init__(self,name,price):
         self.item=name
@@ -795,8 +787,6 @@ class order():
 o1=order("pen",20)
 o2=order("tea",50)
 print(o1>o2)
-
-
 
 
 
