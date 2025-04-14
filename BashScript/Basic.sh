@@ -48,8 +48,6 @@ echo "check file once before overwrite"
 newfile=$(cat > new.txt)
 echo $newfile
 
-
-END_COMMENT
 #Arguments Passing while running script
 
 #echo $0 Reserved for file name not compulsion to declare
@@ -61,4 +59,70 @@ echo $# #print number of arguments passed
 
 name=$1
 echo "name is : $name"
+
+# Arithmatics Operators
+read -p "enter one number : " n1
+read -p "enter other number : " n2
+echo "Addition is = "$((n1+n2))
+echo "Substraction is = "$((n1-n2))
+echo "multiplication is = "$((n1*n2))
+echo "division is = "$((n1/n2))
+echo "Remainder is = $((n1%n2))"
+echo "pre increment of first : $((++n1))"
+
+
+END_COMMENT
+#Relational Operator
+
+
+# if else
+read -p "enter first number : " a 
+read -p "enter seconds numbers : " b
+
+if [ $a -eq $b ] 
+then
+echo "a=b"
+
+elif [ $a -gt $b ]
+then
+echo "a>b"
+
+else
+echo "a<b"
+
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
