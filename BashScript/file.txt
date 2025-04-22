@@ -4,3 +4,10 @@ why
 yes 22
 chess
 ludo
+
+Basic.sh
+file.txt
+new.sh
+test.csv
+
+

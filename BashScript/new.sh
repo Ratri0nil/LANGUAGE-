@@ -174,10 +174,166 @@ do
     echo $word
 done < file.txt
 
-COMMENTED
 #read file data seperated with comma or space etc
 while IFS="," read name age rank
 do 
     echo "$name $age $rank"
 done < test.csv
+
+#functions
+function funname {
+    echo "new function is here"
+}
+funname
+
+#Arguments to script
+echo "$1"
+echo "$2"
+echo "$#"   #number of arguments entered
+echo "$@"   #print all entered arguments
+
+#for loop with arguments
+for arg in $@
+do
+    echo "copied $arg"
+done
+
+#SHIFT arguments
+echo "name is : $1"
+shift               #ignored first argument and took all remaining in one go
+echo "About : $@"
+
+#break in loop
+for ((i-=0;i<10;i++)){
+    if [ $i -eq 5 ]
+    then
+        break
+    else
+        echo "$i"
+    fi
+}
+
+#continue
+for ((i=0;i<10;i++)){
+    if [[ $(($i%2)) -eq 0 ]]
+    then
+        continue
+    else
+        echo "$i"
+    fi
+}
+
+#sleep to give time delay
+#exit to stop script
+if [[ $# -eq 0 ]]
+then
+    echo "no arguments entered"
+    exit 1
+else
+    echo "$1 and $2"
+fi
+
+#exit status if previous command is successful
+ls nothing
+echo $?
+ls
+echo $?
+
+#connectivity check
+read -p "enter website : " sitename
+ping -c 3 $sitename
+
+if [[ $? -eq 0 ]]
+then
+    echo "success!"
+else
+    echo "Error in website"
+fi
+
+#basename : give only end file name skipping path entered
+#realpath : give complete path of file or entered arguments
+#dirname : gives only directory name skipping entered path
+
+#check file or directory exist
+folderpath=$1
+if [[ -d $folderpath ]]
+then
+    echo " folder exist"
+else
+    echo " folder not found"
+
+fi
+
+filepath=$1
+if [[ ! -f $filepath ]]
+then
+    echo "file not found"
+    echo "creating file..."
+    touch $filepath
+    echo "file created"
+else
+    echo "file found"
+fi
+
+#RANDOM : a random int from 0 to 32767
+echo "$RANDOM"
+#UID : user id logged in user
+echo "$UID"
+
+DiceGame(){
+    echo "Throwing dice.."
+    echo " number came = $(($RANDOM%6 +1))"
+}
+DiceGame
+
+CheckRootUser(){
+    if [[ $UID -eq 1000 ]]
+    then
+        echo "It is root user"
+    else
+        echo "Not root user"
+    fi
+}
+CheckRootUser
+
+#Redirection in Scripts
+ls >> file.txt
+cat "file.txt"
+
+# if do not want to print in terminal or in file : &> /dev/null
+read -p "enter website : " sitename
+ping -c 3 $sitename &> /dev/null
+
+echo "script name is : ${0}"
+
+#Debugging
+set -x #execute line by line with debugging
+echo "hey"
+read -p "write your name : " name
+echo "nice to see you $name"
+
+#exit script if error comes in a line
+set -e
+echo "error or not checking"
+datey
+whoami
+
+#run script in background even after closing terminal
+# commands used : nohup filename.exe &
+for i in {1..5}
+do
+    echo "$i" >
+    sleep 1s
+done
+
+#Automate script
+at DD:MM
+bash filename.sh
+ctrl+D
+#check auto scripts
+atq
+#remove auto script
+atrm ID
+
+COMMENTED
 
