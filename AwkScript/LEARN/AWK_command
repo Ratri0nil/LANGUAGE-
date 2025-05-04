@@ -1,0 +1,145 @@
+Syntax {
+    awk Options 'Pattern {Action}' FileName
+
+    OR
+
+    
+}
+Options :
+    -F : field saperator
+    -v :  var=value
+    -f : file
+
+
+Extract any column OR row {
+    awk -F , '{print $N,$M}' filename : print Nth and Mth column/Field in comma saperated data
+    awk -F , '{print NR,$0}' Filename : print Line number with each line
+    awk -F , 'NR==Mth {print $0}' Filename : print Mth line
+    awk -F , 'NR==Mth,NR==Nth{print $0}' Filename : print Mth line to Nth line
+    awk -F , 'NF==0 print NR}' FileName : print blank lines number
+
+}
+
+Terms Used {
+    NR : number of record or row 
+    NF : number of fields == last column/field number
+    $0 : Everything
+    $1.$2 : Filed number one and two
+
+}
+
+Search Word {
+    awk -F , '/SearchWord/{print $0}' Filename : Gives Lines containing a SearchWord
+    awk -F , 'Word1|word2|word3 {print $0}' Filename : Gives Lines containing All given Words
+    awk -F , 'BEGIN{IGNORECASE=1} /SearchWords/ {print $0}' Filename : Ignore Case Sensitivity
+    awk -F , '$Nth ~ /alphabet/ {print $0}' Filename : print data of line if alphabet is present in any word of Nth field
+
+
+}
+
+Work Use With Relational Operators {
+    awk -F , '$N>M {print $0}' : print data if value in Nth field is greater than M number
+    same for < OR ==
+}
+
+Different Delimeter {
+    awk -F[,:-;.] '{print $0}' test.csv : delimeter is comma and colon etc
+}
+
+Only Get Status Of A Service {
+    systemctl status ProcessName | awk 'NR==3 {print $0}' 
+}
+
+Get List of Files/Folders {
+    ls -ltr | awk 'NR>1 {print $NF}' 
+}
+
+Read LOGS in Range of Time {
+    journalctl | awk '$3>="HH:MM:SS" && $3 <= "HH:MM:SS"'
+}
+
+Get File Modified At certain TIME/DATE/DAY/MONTH {
+    ls -ltr | awk '$Nth=="Month" {}print $0}'
+}
+
+Replace A Word {
+    gsub : global substitute function
+    awk -F '{gsub("word1","word2"); print $0}' Filename : Replace word1 with word2 to print on screen
+}
+
+Length Of A Field Or Line {
+    length : a function to count length
+    awk -F , '{print length {$Nth}}' FileName : length of fileds in Nth column
+}
+
+Position Of a Word in a Line {
+    index : A function to get index of word in Line
+    awk -F , '/SearchWord/ { print index($0,"SearchWord")}' FileName : Search Index In whole Line For A word
+}
+
+Print Values in Lower OR Upper Case {
+    tolower : A function to convert string in Lower case
+    toupper : A function to convert string in Upper case
+    awk -F ,  '{print toupper($Nth)}' FileName : Make Words in Nth Field to All UpperCase
+    awk -F , '{print tolower($Nth)}' FileName : make Words in Nth Field to All LowerCase
+}
+
+AWK Scripting Concept {
+    awk -F , 
+        'BEGIN{start_Action}
+            Pattern/Condition{Action}
+        END{stop_Action}'
+    FileName
+    
+    OR
+
+    awk -F , 'BEGIN{ActionAtStart} {SomeAction} END{ActionAtEnd}' FileName
+}
+Actions Can Be {
+    Variables
+    if else
+    Array
+    for loop
+    while loop
+    Function
+}
+
+Get Length Of Longest Line {
+    awk -F
+        'BEGIN{max=0}
+            {if(length($0)>max) max=length($0)}
+        END{print "Length OF Longest Line : " max}'
+    FileName
+}
+
+AWK Script {
+    
+    awk -f File.awk TestFileName : AWK File used instead of whole commands
+
+    ./script.awk TestFileName : awk script to Run
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
